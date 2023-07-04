@@ -7,7 +7,7 @@ import { navLinks } from "../constants";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState("false");
+  const [toggle, setToggle] = useState(false);
 
   return (
     <nav
@@ -23,7 +23,7 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="h-9 w-9 object-contain" />
-          <p className="text-[18px] font-bold cursor-pointer">
+          <p className="text-[18px] font-bold cursor-pointer flex gap-2">
             Three.js <span className="sm:block hidden">Learning</span>
           </p>
         </Link>
@@ -50,6 +50,29 @@ const Navbar = () => {
             onClick={() => setToggle(!toggle)}
           />
         </div>
+
+        {toggle && (
+          <div
+            className={`p-6 black-gradient absolute top-20 right-0 mx-4 min-w-[140px] z-10 rounded-xl`}
+          >
+            <ul className="list-none flex flex-col gap-4 justify-end items-start">
+              {navLinks.map((link) => (
+                <li
+                  key={link.id}
+                  className={`${
+                    active === link.title ? "text-white" : "text-secondary"
+                  } hover:text-white text-[16px] font-poppins font-medium`}
+                  onClick={() => {
+                    setActive(link.title);
+                    setToggle(!toggle);
+                  }}
+                >
+                  <a href={`#${link.id}`}>{link.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </nav>
   );

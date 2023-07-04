@@ -19,6 +19,7 @@ function App() {
           <Navbar />
           <Hero />
         </div>
+        <div className="pt-24"></div>
         <About />
         <Experience />
         <Tech />

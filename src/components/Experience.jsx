@@ -31,11 +31,18 @@ const ExperienceCard = ({ experience, index }) => {
     >
       <div>
         <h3 className="text-[24px] font-bold">{experience.title}</h3>
-        <p className="font-semibold text-[16px] text-secondary m-0">{experience.company_name}</p>
+        <p className="font-semibold text-[16px] text-secondary m-0">
+          {experience.company_name}
+        </p>
 
         <ul className="mt-5 ml-5 space-y-2 list-disc">
           {experience.points.map((point, idx) => (
-            <li key={idx} className="text-[14px] tracking-wider pl-1 text-white-100">{point}</li>
+            <li
+              key={idx}
+              className="text-[14px] tracking-wider pl-1 text-white-100"
+            >
+              {point}
+            </li>
           ))}
         </ul>
       </div>

@@ -5,6 +5,7 @@ import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 import { services } from "../constants";
 import { Tilt } from "react-tilt";
+import { SectionWrapper } from "../hoc";
 
 const ServiceCard = ({ index, service }) => {
   return (
@@ -19,7 +20,7 @@ const ServiceCard = ({ index, service }) => {
             alt={service.title}
             className="object-contain w-16 h-16"
           />
-          <h3 className="text-center">{service.title}</h3>
+          <h3 className="text-center text-[20px] font-bold">{service.title}</h3>
         </div>
       </motion.div>
     </Tilt>
@@ -42,8 +43,7 @@ const About = () => {
       </motion.p>
 
       <div
-        className="mt-20 mx-auto grid gap-10 xs:max-w-[95%] max-w-[85%] justify-items-center"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))"}}
+        className="mt-20 gap-10 flex flex-wrap"
       >
         {services.map((service, index) => (
           <ServiceCard key={index} index={index} service={service} />
@@ -53,4 +53,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default SectionWrapper(About, "about");
